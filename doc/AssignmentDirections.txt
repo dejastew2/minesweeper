@@ -1,0 +1,24 @@
+The goal of this assignment is to create a JESS agent that will find mines in a given Minefield. The assignment is based off of a game called Minesweeper, originally created by Robert Donner and Curt Johnson. It ships with every version of Microsoft (TM) Windows.
+
+The grader for this course, Hafeez Jaffer, has created a clone of the game in JAVA and incorporated the RETE engine so agents can be written to solve a given Minefield. The file that must be modified is "minesweeper.clp," which can be found in the Jess directory. Each rule that is written in this file will be loaded and executed by the MineSweeper program to determine mine locations. The comments in the "minesweeper.clp" file contain the defined defglobals, deftemplates, and hooks to the GUI. In addition, function skeletons have been provided. The readMe file specifies compilation and execution instructions, as well as operating system support.
+
+Note: Currently, this Minesweeper clone is in beta form. Therefore, please inform me or the grader about any bugs, problems, or suggestions. And because this is a difficult assignment, you should start as early as possible.
+
+
+Your program should be able to perform the following tasks:
+
+   1. Logically deduce and flag mine locations in a given solvable minefield (one that doesn't require guessing)
+   2. Solve all the test cases in the "testCases" directory
+   3. Solve expert minefields in an efficient and fast manner 
+
+You must submit the following items:
+
+   1. "minesweeper.clp" file, containing the JESS rules to solve a given minefield
+   2. A README file documenting how your agent deduces mine locations and any known limitations
+
+I will use the following grading guidelines:
+
+   1. 5 points for implementing the deffunctions "flagAllSurroundingUnknowns" and "revealAllSurroundingUnknowns"
+   2. 5 points for performance
+   3. 10 points for the test runs
+   4. 5 points for the README file and documentation of the source code 
