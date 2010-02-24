@@ -29,6 +29,7 @@
 ; pass in a multifield of MineSquares (id's) and
 ;  this function will mark each MineSquare as a mine
 (deffunction flagAllSurroundingUnknowns ($?surrUnknowns)
+	(foreach ?s $?surrUnknowns (flag-square ?s))
 )
 
 ; pass in a multifield of MineSquares (id's) and
@@ -47,6 +48,20 @@
 	 			"This field has " ?numberMines " mines, and is "
                 ?mineHeight " blocks high and "
                 ?mineWidth " blocks wide." crlf crlf))
+
+; This rule fires when the number of surrounding flags plus the 
+; number of unknowns equals the tile status
+(defrule mark-by-exhaustion
+	(MineSquare
+		(id ?i)
+		(row ?r)
+		(col ?c)
+		(status ?s&:(> ?s 0))
+		(numSurroundingFlags ?n)
+		(surroundingUnknowns $?u&:(eq (+ (length$ $?u) ?n) ?s)))
+	=>
+	(printout t " --> MARKING by exhaustion: (r=" ?r ", c=" ?c ")" crlf)
+	(flagAllSurroundingUnknowns $?u))
 
 ; here is a test rule.
 ; find a minesquare that's a 1 and reveal the square to the right of it.
